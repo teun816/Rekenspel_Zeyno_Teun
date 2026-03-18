@@ -10,13 +10,12 @@
         <Grid Margin="255,45,255,45" Background="White">
             <TextBlock HorizontalAlignment="Center" Margin="0,20,0,0" TextWrapping="Wrap" Text="🤓Het Rekenspel🤓" VerticalAlignment="Top" Width="270" Height="30"/>
             <TextBlock HorizontalAlignment="Left" Margin="64,71,0,0" Name="SomBlock" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.049,0.028" Width="156" Height="36"><Run Language="nl-nl"/></TextBlock>
-            <TextBox HorizontalAlignment="Center" Margin="0,125,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="246" RenderTransformOrigin="0.525,0.67" Height="30" TextChanged="TextBox_TextChanged"/>
-            <Button Content="✅Check antwoord" Name="CheckAntwoord"  HorizontalAlignment="Center" Margin="0,172,0,0" VerticalAlignment="Top" Width="246" Height="25" Background="LightGreen"/>
-            <Button Content="Nieuwe som" Name="Random" HorizontalAlignment="Center" Margin="0,212,0,0" VerticalAlignment="Top" Width="246" Height="25" Background="LightBlue" Click="Button_Click"/>
-            <TextBlock HorizontalAlignment="Center" Margin="0,258,0,0" TextWrapping="Wrap" Text="Score 0" VerticalAlignment="Top" RenderTransformOrigin="-0.251,0.591"/>
-            <TextBlock HorizontalAlignment="Center" Margin="0,279,0,0" TextWrapping="Wrap" Text="❤️Levens 3" VerticalAlignment="Top"/>
-            <TextBlock HorizontalAlignment="Center" Margin="0,300,0,0" TextWrapping="Wrap" Name="highScore" Text="High Score:" VerticalAlignment="Top"/>
->>>>>>> 98d04bbc58b88026385b9c73cc1e80a645c017a3
+            <TextBox HorizontalAlignment="Center" Margin="0,125,0,0" Name="AnswerTextBox" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="246" RenderTransformOrigin="0.525,0.67" Height="30"/>
+            <Button Content="✅Check antwoord" Name="CheckAntwoord" Click="CheckAntwoord_Click" HorizontalAlignment="Center" Margin="0,172,0,0" VerticalAlignment="Top" Width="246" Height="25" Background="LightGreen"/>
+            <Button Content="Nieuwe som" Name="RandomButton" HorizontalAlignment="Center" Margin="0,212,0,0" VerticalAlignment="Top" Width="246" Height="25" Background="LightBlue" Click="Button_Click"/>
+            <TextBlock HorizontalAlignment="Center" Margin="0,258,0,0" TextWrapping="Wrap" Name="ScoreTextBlock" Text="Score 0" VerticalAlignment="Top" RenderTransformOrigin="-0.251,0.591"/>
+            <TextBlock HorizontalAlignment="Center" Margin="0,279,0,0" TextWrapping="Wrap" Name="LevensTextBlock" Text="❤️Levens 3" VerticalAlignment="Top"/>
+            <TextBlock Name="HighScoreTextBlock" HorizontalAlignment="Center" Margin="0,300,0,0" TextWrapping="Wrap" Text="High Score: 0" VerticalAlignment="Top"/>
             <TextBlock HorizontalAlignment="Left" Margin="-221,0,0,0" TextWrapping="Wrap" Name="FeedbackTextBlock"  VerticalAlignment="Center" Width="184" Height="273"/>
         </Grid>
     </Grid>

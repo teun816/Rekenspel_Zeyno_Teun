@@ -19,14 +19,43 @@ namespace Rekenspel
         private Random random = new Random();
         private int currentAnswer;
         private int score = 0;
-        private int highScore = 0;
+        private int currentHighScore = 0;
         private int levens = 3;
+        private string highScoreFile = "highscore.txt";
 
         public MainWindow()
         {
             InitializeComponent();
+            LoadHighScore();
             GenerateNewSum();
         }
+
+        private void LoadHighScore()
+        {
+            try
+            {
+                if (System.IO.File.Exists(highScoreFile))
+                {
+                    string text = System.IO.File.ReadAllText(highScoreFile);
+                    if (int.TryParse(text, out int savedHighScore))
+                    {
+                        currentHighScore = savedHighScore;
+                        HighScoreTextBlock.Text = $"High Score: {currentHighScore}";
+                    }
+                }
+            }
+            catch { }
+        }
+
+        private void SaveHighScore()
+        {
+            try
+            {
+                System.IO.File.WriteAllText(highScoreFile, currentHighScore.ToString());
+            }
+            catch { }
+        }
+
         private void GenerateNewSum()
         {
             // Kies willekeurige operatie
@@ -76,29 +105,34 @@ namespace Rekenspel
                 if (userAnswer == currentAnswer)
                 {
                     score++;
-                    if (score > highScore)
+                    if (score > currentHighScore)
                     {
-                        highScore = score;
-                        HighScoreTextBlock.Text = $"High Score: {highScore}";
+                        currentHighScore = score;
+                        HighScoreTextBlock.Text = $"High Score: {currentHighScore}";
+                        SaveHighScore();
                     }
                     ScoreTextBlock.Text = $"Score {score}";
-                    MainGrid.Background = Brushes.LightGreen;
-                    FeedbackTextBlock.Text = "Goed zo!";
-                    FeedbackTextBlock.Foreground = Brushes.Green;
-                    FeedbackTextBlock.Visibility = Visibility.Visible;
+                    MainGrid.Background = Brushes.Green;
                     GenerateNewSum();
                 }
                 else
                 {
                     levens--;
                     LevensTextBlock.Text = $"❤️Levens {levens}";
-                    MainGrid.Background = Brushes.Tomato;
-                    FeedbackTextBlock.Text = "";
-                    FeedbackTextBlock.Visibility = Visibility.Collapsed;
+                    MainGrid.Background = Brushes.Red;
+
 
                     if (levens <= 0)
                     {
-                        MessageBox.Show($"Game Over! Je score is: {score}", "Game Over");
+                        if (score > currentHighScore)
+                        {
+                            currentHighScore = score;
+                            HighScoreTextBlock.Text = $"High Score: {currentHighScore}";
+                            SaveHighScore();
+                        }
+
+                        MessageBox.Show($"Game Over! Je behaalde score is: {score}\nDe huidige High Score is: {currentHighScore}", "Game Over");
+                      
                         score = 0;
                         levens = 3;
                         MainGrid.Background = Brushes.LightGoldenrodYellow;
