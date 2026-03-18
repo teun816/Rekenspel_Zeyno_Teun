@@ -46,7 +46,7 @@ namespace Rekenspel
             }
             catch { }
         }
-
+        f
         private void SaveHighScore()
         {
             try
