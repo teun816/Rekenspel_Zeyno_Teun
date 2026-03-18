@@ -16,7 +16,7 @@
             <TextBlock HorizontalAlignment="Center" Margin="0,258,0,0" TextWrapping="Wrap" Text="Score 0" VerticalAlignment="Top" RenderTransformOrigin="-0.251,0.591"/>
             <TextBlock HorizontalAlignment="Center" Margin="0,279,0,0" TextWrapping="Wrap" Text="❤️Levens 3" VerticalAlignment="Top"/>
             <TextBlock HorizontalAlignment="Center" Margin="0,300,0,0" TextWrapping="Wrap" Text="High Score:" VerticalAlignment="Top"/>
-
+            <TextBlock HorizontalAlignment="Left" Margin="-221,0,0,0" TextWrapping="Wrap" Name="FeedbackTextBlock"  VerticalAlignment="Center" Width="184" Height="273"/>
         </Grid>
     </Grid>
 </Window>
