@@ -5,72 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Rekenspel"
         mc:Ignorable="d"
-        Background="WhiteSmoke"
-        Title="Het Rekenspel" Height="550" Width="800" WindowStartupLocation="CenterScreen">
-    <Window.Resources>
-        <Style TargetType="Button">
-            <Setter Property="Background" Value="#4CAF50"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="FontSize" Value="18"/>
-            <Setter Property="FontWeight" Value="SemiBold"/>
-            <Setter Property="Padding" Value="15,10"/>
-            <Setter Property="Margin" Value="0,10,0,0"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Cursor" Value="Hand"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}" CornerRadius="12" Padding="{TemplateBinding Padding}">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#45a049"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-        <Style x:Key="SecondaryButton" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
-            <Setter Property="Background" Value="#03A9F4"/>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#0288D1"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-    </Window.Resources>
-
-    <Grid Name="MainGrid" Background="AliceBlue">
-        <Border Background="White" MaxWidth="500" MaxHeight="600" VerticalAlignment="Center" HorizontalAlignment="Center"
-                CornerRadius="25" Padding="40">
-            <Border.Effect>
-                <DropShadowEffect Color="Gray" BlurRadius="25" Opacity="0.15" Direction="270" ShadowDepth="10" />
-            </Border.Effect>
-
-            <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Center">
-                <TextBlock HorizontalAlignment="Center" Text="🤓 Het Rekenspel 🤓" FontSize="32" FontWeight="Bold" Foreground="#333" Margin="0,0,0,30"/>
-
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,25">
-                    <TextBlock Name="LevensTextBlock" Text="❤️ Levens: 3" FontSize="18" FontWeight="Bold" Foreground="#E53935" Margin="0,0,25,0"/>
-                    <TextBlock Name="ScoreTextBlock" Text="Score: 0" FontSize="18" FontWeight="Bold" Foreground="#43A047" Margin="0,0,25,0"/>
-                    <TextBlock Name="HighScoreTextBlock" Text="High Score: 0" FontSize="18" FontWeight="Bold" Foreground="#FFB300"/>
-                </StackPanel>
-
-                <Border Background="#E1F5FE" CornerRadius="12" Padding="20" Margin="0,0,0,25">
-                    <TextBlock Name="SomBlock" HorizontalAlignment="Center" Text="? + ? = ?" FontSize="36" FontWeight="ExtraBold" Foreground="#0277BD"/>
-                </Border>
-
-                <TextBox Name="AnswerTextBox" FontSize="26" FontWeight="SemiBold" TextAlignment="Center" Margin="0,0,0,25" Padding="10" 
-                         Background="#FAFAFA" BorderBrush="#CFD8DC" BorderThickness="2" TextChanged="AnswerTextBox_TextChanged" />
-
-                <Button Name="CheckAntwoord" Content="✅ Check Antwoord" Click="CheckAntwoord_Click" Height="41" />
-                <Button Name="RandomButton" Content="🔄 Nieuwe Som" Style="{StaticResource SecondaryButton}" Click="Button_Click"/>
-
-                <TextBlock Name="FeedbackTextBlock" HorizontalAlignment="Center" TextAlignment="Center" FontSize="18" FontWeight="Bold" 
-                           Margin="0,20,0,0" TextWrapping="Wrap" Visibility="Collapsed"/>
-            </StackPanel>
-        </Border>
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Name="MainGrid" Background="LightGoldenrodYellow" RenderTransformOrigin="0.503,0.504">
+        <Grid Margin="255,45,255,45" Background="White">
+            <TextBlock HorizontalAlignment="Center" Margin="0,20,0,0" TextWrapping="Wrap" Text="🤓Het Rekenspel🤓" VerticalAlignment="Top" Width="270" Height="30"/>
+            <TextBlock HorizontalAlignment="Left" Margin="64,71,0,0" Name="SomBlock" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.049,0.028" Width="156" Height="36"><Run Language="nl-nl"/></TextBlock>
+            <TextBox HorizontalAlignment="Center" Margin="0,125,0,0" Name="AnswerTextBox" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="246" RenderTransformOrigin="0.525,0.67" Height="30"/>
+            <Button Content="✅Check antwoord" Name="CheckAntwoord" Click="CheckAntwoord_Click" HorizontalAlignment="Center" Margin="0,172,0,0" VerticalAlignment="Top" Width="246" Height="25" Background="LightGreen"/>
+            <Button Content="Nieuwe som" Name="RandomButton" HorizontalAlignment="Center" Margin="0,212,0,0" VerticalAlignment="Top" Width="246" Height="25" Background="LightBlue" Click="Button_Click"/>
+            <TextBlock HorizontalAlignment="Center" Margin="0,258,0,0" TextWrapping="Wrap" Name="ScoreTextBlock" Text="Score 0" VerticalAlignment="Top" RenderTransformOrigin="-0.251,0.591"/>
+            <TextBlock HorizontalAlignment="Center" Margin="0,279,0,0" TextWrapping="Wrap" Name="LevensTextBlock" Text="❤️Levens 3" VerticalAlignment="Top"/>
+            <TextBlock Name="HighScoreTextBlock" HorizontalAlignment="Center" Margin="0,300,0,0" TextWrapping="Wrap" Text="High Score: 0" VerticalAlignment="Top"/>
+            <TextBlock HorizontalAlignment="Left" Margin="-221,0,0,0" TextWrapping="Wrap" Name="FeedbackTextBlock"  VerticalAlignment="Center" Width="184" Height="273"/>
+        </Grid>
     </Grid>
 </Window>

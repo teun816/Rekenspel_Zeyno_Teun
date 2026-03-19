@@ -46,10 +46,7 @@ namespace Rekenspel
             }
             catch { }
         }
-<<<<<<< HEAD
-=======
-        
->>>>>>> 4f6a17204a55f7042fe9863a4b66b7b5228b56a3
+
         private void SaveHighScore()
         {
             try
@@ -98,6 +95,7 @@ namespace Rekenspel
 
             SomBlock.Text = $"{num1} {operation} {num2} = ?";
             AnswerTextBox.Text = "";
+            FeedbackTextBlock.Visibility = Visibility.Collapsed;
         }
 
         private void CheckAntwoord_Click(object sender, RoutedEventArgs e)
@@ -113,21 +111,18 @@ namespace Rekenspel
                         HighScoreTextBlock.Text = $"High Score: {currentHighScore}";
                         SaveHighScore();
                     }
-                    ScoreTextBlock.Text = $"Score: {score}";
-                    MainGrid.Background = Brushes.LightGreen;
-                    FeedbackTextBlock.Text = "Goed zo!";
-                    FeedbackTextBlock.Foreground = Brushes.Green;
-                    FeedbackTextBlock.Visibility = Visibility.Visible;
+                    ScoreTextBlock.Text = $"Score {score}";
+                    MainGrid.Background = Brushes.Green;
                     GenerateNewSum();
                 }
                 else
                 {
                     levens--;
-                    LevensTextBlock.Text = $"❤️ Levens: {levens}";
-                    MainGrid.Background = Brushes.LightCoral;
-                    FeedbackTextBlock.Text = "Fout, probeer nog eens!";
-                    FeedbackTextBlock.Foreground = Brushes.Red;
-                    FeedbackTextBlock.Visibility = Visibility.Visible;                    if (levens <= 0)
+                    LevensTextBlock.Text = $"❤️Levens {levens}";
+                    MainGrid.Background = Brushes.Red;
+
+
+                    if (levens <= 0)
                     {
                         if (score > currentHighScore)
                         {
@@ -140,9 +135,9 @@ namespace Rekenspel
                       
                         score = 0;
                         levens = 3;
-                        MainGrid.Background = Brushes.AliceBlue;
-                        ScoreTextBlock.Text = $"Score: {score}";
-                        LevensTextBlock.Text = $"❤️ Levens: {levens}";
+                        MainGrid.Background = Brushes.LightGoldenrodYellow;
+                        ScoreTextBlock.Text = $"Score {score}";
+                        LevensTextBlock.Text = $"❤️Levens {levens}";
                         GenerateNewSum();
                     }
                 }
@@ -157,26 +152,8 @@ namespace Rekenspel
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MainGrid.Background = Brushes.AliceBlue;
-            FeedbackTextBlock.Visibility = Visibility.Collapsed;
+            MainGrid.Background = Brushes.LightGoldenrodYellow;
             GenerateNewSum();
-        }
-
-        private void AnswerTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (MainGrid.Background != Brushes.AliceBlue)
-            {
-                MainGrid.Background = Brushes.AliceBlue;
-                FeedbackTextBlock.Visibility = Visibility.Collapsed;
-            }
-        }
-
-        private void AnswerTextBox_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter)
-            {
-                CheckAntwoord_Click(sender, e);
-            }
         }
     }
 }
