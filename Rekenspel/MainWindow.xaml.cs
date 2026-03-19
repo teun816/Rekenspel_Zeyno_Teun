@@ -104,15 +104,24 @@ namespace Rekenspel
                 if (userAnswer == currentAnswer)
                 {
                     score++;
+                    bool newHighScore = false;
                     if (score > currentHighScore)
                     {
                         currentHighScore = score;
                         HighScoreTextBlock.Text = $"High Score: {currentHighScore}";
                         SaveHighScore();
+                        newHighScore = true;
                     }
                     ScoreTextBlock.Text = $"Score: {score}";
-                    MainGrid.Background = Brushes.LightGreen;
-                    FeedbackTextBlock.Text = "Goed zo!";
+                    MainGrid.Background = Brushes.Green;
+                    if (newHighScore)
+                    {
+                        FeedbackTextBlock.Text = "Goed zo! Nieuwe High Score!";
+                    }
+                    else
+                    {
+                        FeedbackTextBlock.Text = "Goed zo!";
+                    }
                     FeedbackTextBlock.Foreground = Brushes.Green;
                     FeedbackTextBlock.Visibility = Visibility.Visible;
                     GenerateNewSum();
@@ -161,9 +170,8 @@ namespace Rekenspel
 
         private void AnswerTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (MainGrid.Background != Brushes.AliceBlue)
+            if (AnswerTextBox.Text != "")
             {
-                MainGrid.Background = Brushes.AliceBlue;
                 FeedbackTextBlock.Visibility = Visibility.Collapsed;
             }
         }
